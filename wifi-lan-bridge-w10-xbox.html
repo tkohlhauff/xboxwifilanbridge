@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Create a Network Bridge for Original Xbox</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: #00FF00;
+            --background-color: #0F0F0F;
+            --secondary-bg: #111;
+            --text-color: #00FF00;
+            --highlight-bg: #222;
+        }
+
+        body { 
+            font-family: 'Orbitron', sans-serif; 
+            line-height: 1.6; 
+            padding: 20px; 
+            background-color: var(--background-color); 
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        h1, h2 { 
+            color: var(--primary-color); 
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            background: var(--secondary-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px var(--primary-color);
+            position: relative;
+            z-index: 2;
+        }
+
+        .step { 
+            margin-bottom: 20px; 
+            padding: 15px;
+            background: var(--highlight-bg);
+            border-radius: 8px;
+        }
+
+        img { 
+            max-width: 100%; 
+            height: auto; 
+            display: block; 
+            margin: 10px auto;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px var(--primary-color);
+        }
+
+        pre, ul, ol { 
+            background: var(--secondary-bg); 
+            padding: 10px; 
+            border-radius: 5px; 
+            box-shadow: 0px 0px 5px var(--primary-color);
+            list-style-position: inside;
+            margin-left: 0;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        a { color: var(--primary-color); }
+
+        .glow-circle {
+            position: fixed;
+            width: 1200px;
+            height: 1200px;
+            background: radial-gradient(circle, rgba(0,255,0,0.6) 10%, rgba(0,255,0,0) 80%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            animation: glow 3s infinite alternate ease-in-out;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        @keyframes glow {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-circle"></div>
+    <div class="container">
+        <h1>How to Create a Network Bridge Between Wi-Fi and LAN</h1>
+        <p>Set up your Original Xbox with internet access by bridging your PC’s Wi-Fi connection to its Ethernet port.</p>
+        
+        <h2>Step 1: Find Your Wi-Fi IP Settings</h2>
+        <div class="step">
+            <p>Open Command Prompt and run the following command:</p>
+            <pre>ipconfig /all</pre>
+            <p>Locate your Wi-Fi adapter details and write down the following information: (You could also use any available IP in your network, but for simplicity this guide recommends copying the wifi IP)</p>
+            <ul>
+                <li>IPv4 Address</li>
+                <li>Subnet Mask</li>
+                <li>Default Gateway</li>
+                <li>DNS Servers</li>
+            </ul>
+            <img src="image1.png" alt="Wi-Fi IP configuration output in Command Prompt">
+        </div>
+        
+        <h2>Step 2: Create a Network Bridge</h2>
+        <div class="step">
+            <p>Follow these steps to create the network bridge:</p>
+            <ol>
+                <li>Open <strong>Control Panel</strong> and go to <strong>Network and Internet</strong>.</li>
+                <li>Click on <strong>Network and Sharing Center</strong>.</li>
+                <li>On the left, click <strong>Change adapter settings</strong>.</li>
+                <li>Press <strong>Ctrl + Click</strong> to select both your Wi-Fi and Ethernet adapters.</li>
+                <li>Right-click one of them and select <strong>Bridge Connections</strong>.</li>
+            </ol>
+            <img src="image2.png" alt="Creating a network bridge">
+        </div>
+        
+        <h2>Step 3: Configure IP Settings for Network Bridge</h2>
+        <div class="step">
+            <p>Once the bridge is created:</p>
+            <ol>
+                <li>Right-click the <strong>Network Bridge</strong> and select <strong>Properties</strong>.</li>
+				<img src="image3.png" alt="Clicking properties on Bridge">
+                <li>Select <strong>Internet Protocol Version 4 (TCP/IPv4)</strong> and click <strong>Properties</strong>.</li>
+				<img src="image4.png" alt="Clicking ipv4">
+                <li>Choose <strong>Use the following IP address</strong> and enter the details you wrote down earlier.</li>
+                <li>Enter the same <strong>DNS server addresses</strong> as before.</li>
+				<img src="image5.png" alt="Setting static IP for network bridge">
+                <li>Click <strong>OK</strong> and close out.</li>
+            </ol>
+        </div>
+        
+        <h2>Step 4: Restart and Test</h2>
+        <div class="step">
+            <p>Restart your PC. Once logged back in:</p>
+            <ul>
+                <li>Reconnect to your Wi-Fi.</li>
+                <li>Check if your Ethernet shows a connected status.</li>
+                <li>On your Xbox, run a network test.</li>
+            </ul>
+            <img src="image6.png" alt="Ethernet icon in system tray">
+            <img src="image7.png" alt="Xbox network test successful">
+        </div>
+        
+        <h2>Conclusion</h2>
+        <p>Your Original Xbox should now have internet access via your PC's Wi-Fi. If you run into any issues, try disabling and re-enabling the bridge or re-entering the IP settings.</p>
+    </div>
+</body>
+</html>
